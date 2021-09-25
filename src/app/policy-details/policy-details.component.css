@@ -1,0 +1,19 @@
+.policyForm {
+
+}
+
+.policyForm__field {
+  width: 100%;
+}
+
+.policyDetailContainer {
+  margin-top: 5rem;
+  margin-left: 2rem;
+  min-width: 150px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.section {
+  margin-top: 1rem;
+}

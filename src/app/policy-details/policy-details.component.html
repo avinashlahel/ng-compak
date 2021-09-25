@@ -1,0 +1,30 @@
+<div class="policyDetailContainer">
+
+  <h2 class="mat-display-1">Policy Info</h2>
+
+  <mat-divider></mat-divider>
+
+  <form class="policyForm" [formGroup]="policyForm">
+
+    <mat-form-field class="policyForm__field" appearance="fill">
+      <mat-label>Agency Number</mat-label>
+      <input matInput  formControlName="polNum">
+    </mat-form-field>
+
+    <mat-form-field class="policyForm__field"appearance="fill">
+      <mat-label>Policy Effective Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="policyEffDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <section class="section" fxLayoutAlign="end">
+      <button mat-raised-button color="accent" (click)="proceed()">Proceed</button>
+    </section>
+
+  </form>
+
+</div>
+
+
