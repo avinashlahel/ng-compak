@@ -2,18 +2,26 @@
 
   <h2 class="mat-display-1">Policy Info</h2>
 
-  <mat-divider></mat-divider>
 
   <form class="policyForm" [formGroup]="policyForm">
 
     <mat-form-field class="policyForm__field" appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="stateAlphaCode">
+        <mat-option *ngFor="let state of states" [value]="state">
+          {{state}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="policyForm__field" appearance="fill">
       <mat-label>Agency Number</mat-label>
-      <input matInput  formControlName="polNum">
+      <input matInput  formControlName="agencyNumber">
     </mat-form-field>
 
     <mat-form-field class="policyForm__field"appearance="fill">
       <mat-label>Policy Effective Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="policyEffDate">
+      <input matInput [matDatepicker]="picker" formControlName="policyEffDate" >
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
