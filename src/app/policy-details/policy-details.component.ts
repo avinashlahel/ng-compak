@@ -34,6 +34,7 @@ export class PolicyDetailsComponent implements OnInit {
     console.log(postBody);
     this.httpClient
       .post(POLICY_ENDPOINT, postBody, this.getHeaders())
+      .subscribe();
   }
 
   private getDefaults() {

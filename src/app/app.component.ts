@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MediaObserver} from "@angular/flex-layout";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,14 +7,9 @@ import {Subscription} from "rxjs";
 })
 export class AppComponent implements OnInit{
   title = 'ng-compak';
-  mediaSub: Subscription | undefined;
 
-  constructor(private mediaObserver: MediaObserver) {
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.mediaSub = this.mediaObserver
-      .asObservable()
-      .subscribe();
   }
 }
