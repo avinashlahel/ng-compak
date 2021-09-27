@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {TokenService} from "../services/token.service";
-import {JWT_ACCESS_TOKEN} from "../constant";
+import {AuthService} from "../services/auth.service";
 
 const POLICY_ENDPOINT = "http://localhost:9090/v1/policy"
 
@@ -16,14 +15,15 @@ export class PolicyDetailsComponent implements OnInit {
   states = ['MA', 'NJ'];
 
   policyForm = this.fb.group({
-    stateAlphaCode : ['', [Validators.required]],
-    agencyNumber : ['', [Validators.required]],
+    stateAlphaCode: ['', [Validators.required]],
+    agencyNumber: ['', [Validators.required]],
     policyEffDate: ['', Validators.required]
   })
 
   constructor(private fb: FormBuilder,
               private httpClient: HttpClient,
-              private tokenService: TokenService) { }
+              private authService: AuthService) {
+  }
 
   public ngOnInit(): void {
   }
@@ -31,10 +31,9 @@ export class PolicyDetailsComponent implements OnInit {
   public proceed() {
     let defaultValues = this.getDefaults();
     let postBody = {...defaultValues, ...this.policyForm.value}
-    console.log(postBody);
     this.httpClient
       .post(POLICY_ENDPOINT, postBody, this.getHeaders())
-      .subscribe();
+      .subscribe((resp) => console.log(resp));
   }
 
   private getDefaults() {
@@ -51,7 +50,8 @@ export class PolicyDetailsComponent implements OnInit {
   private getHeaders() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.tokenService.getToken(JWT_ACCESS_TOKEN)}` });
-    return  { headers };
+      'Authorization': `Bearer ${this.authService._token}`
+    });
+    return {headers};
   }
 }
