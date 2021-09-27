@@ -8,7 +8,7 @@ import {DataService} from "../data.service";
 })
 export class PolicyQuestionsComponent implements OnInit {
 
-  private policyNumber: string;
+  public policyNumber: string;
 
   constructor(private dataService: DataService) {
     this.policyNumber = this.dataService._policyNumber;
