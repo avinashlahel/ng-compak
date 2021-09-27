@@ -19,13 +19,15 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {RoutingModule} from "./routing/routing.module";
 import {LoginComponent} from './login/login.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { PolicyQuestionsComponent } from './policy-questions/policy-questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PolicyDetailsComponent,
     UnauthorizedComponent,
-    LoginComponent
+    LoginComponent,
+    PolicyQuestionsComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
+import {DataService} from "../data.service";
+import {Router} from "@angular/router";
 
 const POLICY_ENDPOINT = "http://localhost:9090/v1/policy"
 
@@ -22,7 +24,9 @@ export class PolicyDetailsComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private httpClient: HttpClient,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private dataService: DataService,
+              private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -33,7 +37,10 @@ export class PolicyDetailsComponent implements OnInit {
     let postBody = {...defaultValues, ...this.policyForm.value}
     this.httpClient
       .post(POLICY_ENDPOINT, postBody, this.getHeaders())
-      .subscribe((resp) => console.log(resp));
+      .subscribe((resp : any) => {
+        this.dataService._policyNumber = resp.policyNumber;
+        this.router.navigate(['questions']);
+      });
   }
 
   private getDefaults() {

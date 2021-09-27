@@ -4,6 +4,7 @@ import {UnauthorizedComponent} from "../unauthorized/unauthorized.component";
 import {LoginComponent} from "../login/login.component";
 import {PolicyDetailsComponent} from "../policy-details/policy-details.component";
 import {LoginGuard} from "../login.guard";
+import {PolicyQuestionsComponent} from "../policy-questions/policy-questions.component";
 
 const routes: Routes = [
   { path:  '', redirectTo:  'login', pathMatch:  'full' },
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'policy-info',
     component: PolicyDetailsComponent
+  },
+  {
+    path: 'questions',
+    component: PolicyQuestionsComponent
   },
   {
     path: 'unauthorized',
